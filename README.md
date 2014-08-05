@@ -1,6 +1,6 @@
 # DirtyListeners
 
-TODO: Write a gem description
+Add lifecycle aware dirty attribute listeners to your project.
 
 ## Installation
 
@@ -17,8 +17,41 @@ Or install it yourself as:
     $ gem install dirty_listeners
 
 ## Usage
+```ruby
 
-TODO: Write usage instructions here
+## Include the module in your ActiveRecord class
+class Dog < ActiveRecord::Base
+  include DirtyListener::Subscriptions
+end
+
+## Create a listener
+class ExampleListener < DirtyListener::BaseListener
+  listening_to :dog do
+    order :age_change, :name_change
+
+    on :name_change, unless: "old.nil?" do |old, new|
+      # ...
+    end
+
+    on :age_change do |old, new|
+      # ...
+    end
+
+    on :birthday_change do |old, new|
+      # ...
+    end
+
+    on :awake_change do |old, new|
+      # ...
+    end
+  end
+end
+
+## Add the listener to the object and specify the lifecycle event you want it to fire on
+listener = ExampleListener.new
+dog = Dog.new
+dog.subscribe listener, to: :before_save
+```
 
 ## Contributing
 

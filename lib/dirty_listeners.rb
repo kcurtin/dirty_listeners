@@ -1,5 +1,7 @@
-require "dirty_listeners/version"
+require 'debugger'
+require 'ostruct'
+require 'active_record'
 
-module DirtyListeners
-  # Your code goes here...
-end
+require "dirty_listeners/version"
+require 'dirty_listeners/base_listener'
+require 'dirty_listeners/subscriptions'

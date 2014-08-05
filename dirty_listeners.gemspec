@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = DirtyListeners::VERSION
   spec.authors       = ["Kevin Curtin"]
   spec.email         = ["kevincurtin88@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Add lifecycle aware dirty attribute listeners to your project.}
+  spec.description   = %q{Hook into lifecycle events and attribute changes.}
+  spec.homepage      = "http://kjcurtin.com"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -18,7 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency 'activerecord'
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
+  spec.add_development_dependency "sqlite3"
 end
