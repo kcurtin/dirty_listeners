@@ -1,4 +1,3 @@
-require 'debugger'
 require 'ostruct'
 require 'active_record'
 
